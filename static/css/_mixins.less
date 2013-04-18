@@ -1,0 +1,42 @@
+.box-shadow (@x: 1px, @y: 0px, @blur: 6px, @alpha: 0.5) {
+  @value: @x @y @blur rgba(0, 0, 0, @alpha);
+  box-shadow:         @value;
+  -moz-box-shadow:    @value;
+  -webkit-box-shadow: @value;
+}
+
+.transition (@prop, @duration){
+    transition:@prop @duration;
+    -moz-transition: @prop @duration; /* Firefox 4 */
+    -webkit-transition: @prop @duration; /* Safari and Chrome */
+    -o-transition: @prop @duration; /* Opera */
+}
+
+::-webkit-scrollbar {
+    height: 9px;
+    width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7D7D7D;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #666;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-track-piece {
+    background-color: inherit;
+}
+
+@font-face {font-family: 'Novecentowide-Bold';src: url('webfonts/26A9A4_0_0.eot');src: url('webfonts/26A9A4_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/26A9A4_0_0.woff') format('woff'),url('webfonts/26A9A4_0_0.ttf') format('truetype');}
+@font-face {font-family: 'Novecentowide-Medium';src: url('webfonts/26A9A4_4_0.eot');src: url('webfonts/26A9A4_4_0.eot?#iefix') format('embedded-opentype'),url('webfonts/26A9A4_4_0.woff') format('woff'),url('webfonts/26A9A4_4_0.ttf') format('truetype');}

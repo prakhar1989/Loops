@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+    {% block sidebar %}
+    <script id="playlist_template" type="text/x-handlebars-template">
+    <div class="songs">
+        <ul class="playlist">
+            {{#each this}}
+            <li class="song" data-index = {{ @index }} data-artist="{{artist}}"
+                             data-title="{{title}}" data-filename="{{ makeFileName filename }}"> 
+                 <p>{{ title }}</p>
+                 <span class="artist"> {{ artist }} </span>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    </script>
+    {% endblock %}
+
+    {% block main %} 
+    <script id="main_template" type="text/x-handlebars-template">
+        <div class="trackinfo">
+            <header>
+                <h1> {{ name }}</h1>
+                <h2> {{ artist.name }} </h2>
+                <h3> {{ album.title }} </h3>
+            </header>
+                <div>
+                    <p class="summary"> {{{ bio.summary }}} </p>
+                <div class="meta">
+                    <img src="{{ getAlbumArt }}" alt=" {{ artist.name }} " />
+                    <ul class="genres">
+                        {{#each toptags.tag}}
+                        <li> {{ this.name }} </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </script>
+    {% endblock %}

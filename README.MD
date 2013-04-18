@@ -1,0 +1,2 @@
+# LOOPS
+> Play | Pause | Repeat

@@ -1,0 +1,269 @@
+@import "_normalize";
+@import "_mixins";
+
+@base: #EEEEEE;
+@sidebase: #151B1E;
+@accent_color: #FFAB00;
+@width: 100%;
+
+.headingFont {
+    font-family: 'Novecentowide-Bold';
+}
+
+.taglineFont {
+    font-family: 'Novecentowide-Medium';
+}
+
+::selection {
+	background: lighten(@sidebase, 50%); 
+}
+::-moz-selection {
+	background: lighten(@sidebase, 50%); 
+}
+
+ 
+body {
+    background: @base;
+    color: darken(@base, 60%);
+    font-family: "Strait", sans-serif !important;
+    font-size: 14px;
+}
+
+.container {
+    overflow: auto;
+}
+
+ul { 
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotating {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+#sidebar {
+    background: @sidebase;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    width: 26%;
+    float: left;
+
+    #logo {
+        font-family: "Aldrich";
+        padding-left: 30px;
+        margin-bottom: 30px;
+        color: @accent_color;
+        .headingFont();
+        img {
+            width: 50px;
+            -webkit-animation: rotating 1.5s linear infinite;
+            animation: rotating 1.5s linear infinite;
+            border: 2px solid lighten(@sidebase, 60%);
+            border-radius: 100%;
+        }
+        h1 { 
+        font-size: 70px; margin-bottom:0px }
+        .tagline { 
+            .taglineFont();
+            text-transform: uppercase;
+            text-align: center;
+        }
+    }
+
+    #controls {
+        padding-left: 30px;
+        .buttons {
+            list-style-type:none;
+            margin: 0px auto;
+            li { 
+             display: block;
+             margin-right: 40px;
+             margin-bottom: 40px;
+             float: left;
+             width: 40px;
+             height: 40px;
+             cursor: pointer;
+             border-radius: 100%;
+            }
+            .prev {
+                background: url("/static/img/controls/control_start.png") no-repeat center;
+                 &:hover {
+                    background-color: @accent_color;
+                 }
+            }
+            .pause {
+                background: url("/static/img/controls/control_pause.png") no-repeat center;
+                 &:hover {
+                    background-color: @accent_color;
+                 }
+            }
+            .play {
+                background-image: url("/static/img/controls/control_play.png") !important;
+                 &:hover {
+                    background-color: @accent_color;
+                 }
+            }
+            .next {
+                background: url("/static/img/controls/control_end.png") no-repeat center;
+                 &:hover {
+                    background-color: @accent_color;
+                 }
+            }
+        }
+    }
+}
+
+.songs {
+    clear: both;
+}
+
+.song{
+    p { 
+        .taglineFont();
+        margin:0 0 8px 0; 
+    }
+    .artist {
+        font-style: italic;
+        color: lighten(@sidebase, 50%);
+    }
+    border-bottom: 1px solid lighten(@sidebase, 10%);
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+    position: relative;
+    &:hover{
+        background: darken(@sidebase, 5%)  ;
+        border-left: 5px solid @accent_color  ;
+        padding-left: 25px  ;
+    }
+
+    .index {
+        display: none;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        color: @accent_color;
+    }
+}
+
+.nowplaying {
+    background: darken(@sidebase, 5%);
+    border-left: 5px solid @accent_color;
+    padding-left: 25px;
+}
+
+
+.playlist {
+    border-top: 1px solid lighten(@sidebase, 10%);
+}
+
+#main {
+    width: 74%;
+    color: white;
+    float: right;
+      background: url(/static/img/bg/1.jpg) no-repeat top center fixed; 
+      webkit-background-size: cover;
+      moz-background-size: cover;
+      o-background-size: cover;
+      background-size: cover;
+      .transition(background,  1s);
+    .trackinfo {
+        margin: 30px;
+        img {
+            border: 5px solid white;
+        }
+        .summary {
+            width: 30%;
+            padding-left: 20px;
+            float: left;
+            font-size: 16px;
+            line-height: 24px;
+            a {
+                color: @accent_color;
+                text-decoration: none;
+            }
+        }
+        .meta {
+            width: 40%;
+            float: left;
+            padding-left: 65px;
+            padding-top: 18px;
+        }
+        header {
+            background: rgba(0,0,0, 0.4);
+            margin-bottom: 30px;
+            padding: 20px;
+            .headingFont();
+            h1 {
+                font-size: 80px;
+                margin: 0
+            }
+            h2 {
+                font-size: 40px;
+                color: @accent_color;
+                margin: 0
+            }
+            h3 {
+                font-size: 24px;
+                margin: 10px 0;
+                color: lighten(@sidebase, 50%);
+                font-style: italic;
+            }
+        }
+    }
+}
+
+
+.masthead {
+    background: rgba(0,0,0,0.4);
+    .headingFont();
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+    h1 {
+        .headingFont();
+        font-size: 60px;
+        margin: 0
+    }
+    h3 {
+        font-size: 24px;
+        margin: 10px 0;
+        color: @accent_color;
+        font-style: italic;
+    }
+    .credits {
+        margin-top: 30px;
+        a { color: lighten(@sidebase, 60%); text-decoration: none;}
+    }
+}
+
+.genres {
+    width: 184px;
+   li {
+    float: left;
+    margin:6px 6px 0 0;
+    background: @accent_color;
+    border-radius: 3px;
+    padding: 5px 10px;
+   } 
+}
+
+audio { display: none; }

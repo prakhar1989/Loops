@@ -5,23 +5,17 @@ import sqlite3
 # config
 music_db = "loops.db"
 
-def execSql(statement, items=None):
+def init_db(songs_dir):
     conn = sqlite3.connect(music_db)
     cur = conn.cursor()
-    if items:
-        cur.executemany(statement, items)
+    result = cur.execute("select count(name) from sqlite_master where name = 'SONGS'").fetchone()
+    if result[0] == 0:
+        statement = '''CREATE TABLE SONGS (title text, artist text, filename text)'''
     else:
-        cur.execute(statement)
-    conn.commit()
-    conn.close()
-
-def init_db():
-    statement = '''CREATE TABLE SONGS
-                (title text, artist text, filename text)'''
-    execSql(statement)
+        statement = '''DELETE FROM SONGS'''
+    cur.execute(statement)
     print "------------ %s DB created ------------" % (music_db)
 
-def add_songs(songs_dir):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     songs_path = os.path.join(current_dir, songs_dir)
     songs = os.listdir(songs_path)
@@ -33,16 +27,11 @@ def add_songs(songs_dir):
                            audiofile.tag.artist,
                            "/" + songs_dir + song)) #TODO: Hack? :(
 
-    statement = "INSERT INTO SONGS VALUES (?, ?, ?)"
-    execSql(statement, songs_info)
+    cur.executemany("INSERT INTO SONGS VALUES (?, ?, ?)", songs_info)
     print "------------ %s songs added ------------" % len(songs_info)
-
-def clear_db():
-    statement = "DELETE FROM SONGS"
-    print "------------ SONGS TABLE CLEARED ------------"
-    execSql(statement)
+    conn.commit()
+    conn.close()
 
 if __name__ == "__main__":
     songs_dir = "static/songs/"
-    init_db()
-    add_songs(songs_dir)
+    init_db(songs_dir)

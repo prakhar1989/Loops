@@ -1,0 +1,15 @@
+ISSUES
+- jPlayer for cross-browser
+- load images when page loads (done)
+- exception handling on ID3 tagless songs
+- loading animation while fetching metadata
+
+
+FEATURES
+- More artist info and similar artists
+- Loop one, Loop all (remove prev and next)
+
+
+http://stackoverflow.com/questions/476679/preloading-images-with-jquery
+http://www.techrepublic.com/article/preloading-and-the-javascript-image-object/5214317
+http://www.scriptalicious.com/blog/2011/08/using-css-to-preload-images-without-javascript/

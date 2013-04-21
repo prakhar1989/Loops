@@ -17,13 +17,21 @@ var Songs = {
         this.declarations();
         this.colorBGImage(false);
         this.keyboardBindings();
+        this.preloadImages();
+    },
+
+    preloadImages: function() {
+        var arr = ["/static/img/bg/dark.jpg", "/static/img/bg/light.jpg"];
+        $.each(arr, function(index, img){
+            $(new Image())[0].src = img;
+        });
     },
 
     colorBGImage: function(color) {
         if ( !color ) {
-            $(this.container).css('background-image', 'url(/static/img/bg/1.jpg)'); 
+            $(this.container).css('background-image', 'url(/static/img/bg/dark.jpg)'); 
         } else {
-            $(this.container).css('background-image', 'url(/static/img/bg/2.jpg)');
+            $(this.container).css('background-image', 'url(/static/img/bg/light.jpg)');
         }
     },
 
@@ -64,8 +72,6 @@ var Songs = {
         self.isPaused = false;
         self.audio.play();
         
-        console.log(self.audio.duration);
-
         $(self.sidebar).find('.pause').removeClass('play');
 
         self.colorBGImage(true);

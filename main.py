@@ -37,4 +37,4 @@ def get_songs():
     return jsonify(songs=json_results)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

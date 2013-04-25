@@ -21,6 +21,7 @@
 
             <div id="controls">
                 <audio id="loopplayer" src="#"></audio>
+                <!--  <div id="player"></div> -->
                 <ul class="buttons">
                     <li class="prev"></li>
                     <li class="pause play"></li>
@@ -47,11 +48,13 @@
 
     </div>
 <script src="static/js/jquery.js"></script>
+<script type="text/javascript" src='js/jquery.jplayer.min.js'></script>
 <script src="static/js/handlebars.js"></script>
 <script src="static/js/mousetrap.min.js"></script>
 <script src="static/js/custom.js"></script>
 <script type="text/javascript">
     (function(){
+        // background image cover hack!
         var setHeight = function() {
             $('#main').css("min-height", window.innerHeight);
             $('.masthead').css("margin-top", window.innerHeight/2 - 100);
